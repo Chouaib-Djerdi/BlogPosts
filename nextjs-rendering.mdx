@@ -1,0 +1,51 @@
+---
+title : "Next.js Rendering Strategies"
+date : "2024-04-20"
+tags : ["Next.js", "SSR", "SSG", "ISG"]
+---
+
+<CustomImage
+  src="https://raw.githubusercontent.com/Chouaib-Djerdi/BlogPosts/main/images/ssr-ssg-isr.jpg"
+  alt="Goku Test Img"
+/>
+
+# Understanding Next.js: Build Time, Run Time, and Different Rendering Methods
+
+## Introduction
+Once the compilation process is complete, which involves converting code from a higher-level programming language to a lower-level representation (binary code), our application goes through two crucial phases: **Build Time** and **Run Time**.
+
+## Build Time
+Build time is a series of steps where we prepare our application code for production. This involves the steps of code compilation, bundling, optimization, etc. In short, build time or compile time is the time period in which we, the developer, are compiling the code. Remember the `npm run dev` script? It's that command that generated the build of our application containing all the necessary static files, bundling, optimization, dependency resolution, etc.
+
+## Run Time
+Run time refers to the time period when the compiled or deployed application is actively executing and running. This involves the dynamic execution of the application's code and utilization of system resources. In short, run time is the time period when a user is running our application's piece of code. It's about handling user interaction, such as user input, responding to events, to data processing, such as manipulating/accessing data and interacting with external services or APIs.
+
+## Run Time Environment (RTE)
+Don't confuse this with the "Run Time” we talked about just before. That was the time period of an application. Whereas RTE, run time environment, is a specific environment in which a program or application runs during its execution. It provides a set of libraries, services, or runtime components that support the execution of the program.
+
+## The Node.js Runtime
+The Node.js runtime is the default runtime that has access to all Node.js APIs and the ecosystem. Next.js offers the flexibility of choosing the runtime.
+
+## The Edge Runtime
+The Edge runtime is a lightweight runtime based on Web APIs with support to a limited subset of Node.js APIs. You can switch swiftly by changing one word.
+
+## Static Site Generation (SSG)
+Remember the build time? Well, the famous SSG, static site generation, happens at build time on the server. During the build process, the content is generated and converted into HTML, CSS, and JavaScript files. It doesn't require server interaction during runtime. The generated static files can be hosted on a content delivery network (CDN) and then served to the client as-is.
+
+## Incremental Static Generation (ISG)
+ISG allows us to update these static pages after we build them without needing to rebuild the entire site. The on-demand generation of ISR allows us to generate a specific page on-demand or in response to a user's request.
+
+## Server Side Rendering (SSR)
+Dynamic rendering, in a nutshell, enables the generation of dynamic content for each request, providing fresh and interactive experiences. If we have SSG and ISG, why do we need SSR?
+
+## The Need for Server Side Rendering (SSR)
+Given the availability of **Static Site Generation (SSG)** and **Incremental Static Generation (ISG)**, one might wonder why **Server Side Rendering (SSR)** is still needed. Both approaches offer valuable benefits, but their suitability depends on specific use cases.
+
+SSR excels in situations where a website heavily relies on client-side interactivity and requires real-time updates. It is particularly well-suited for authentication, real-time collaborative applications such as chat platforms, editing tools, and video streaming services.
+
+SSR involves heavy server-side processing, where the server executes code for every individual request, generates the necessary HTML, and delivers the response along with the required JavaScript code for client-side interactivity.
+
+Due to this dynamic nature, caching content responses becomes challenging, resulting in increased server load when compared to SSG or ISG. However, the benefits of real-time interactivity and up-to-date content make SSR a valuable choice for specific application requirements.
+
+## The Flexibility of Next.js
+But hey, we have the freedom to choose any of these rendering techniques for any part of your page code! Yes, you read that right. By default, Next.js uses **Static Site Generation rendering**. However, we can easily switch to **Incremental Static Generation** or **Server Side Rendering** as per our specific requirements for different parts of your application. The flexibility of Next.js allows us to pick the most suitable rendering approach for each page of our website.
